@@ -1,0 +1,8 @@
+# Tells Railway's Nixpacks builder to install poppler-utils (provides the
+# `pdftotext` binary the MOPH PDF pipeline depends on) alongside the default
+# Node.js toolchain. Without this, src/services/pdfExtract.js will throw a
+# clear "pdftotext is not installed" error at runtime instead of silently
+# failing — but it's better to just have it installed.
+
+[phases.setup]
+nixPkgs = ["nodejs_22", "poppler_utils"]
