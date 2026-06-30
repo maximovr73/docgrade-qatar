@@ -1,19 +1,20 @@
 {
-  "name": "docgrade-qatar",
+  "name": "docgrade-server",
   "version": "1.0.0",
-  "private": true,
+  "description": "DocGrade backend proxy: secures Anthropic API key, MOPH guideline RAG sync, HIS export endpoints",
   "type": "module",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "sync:moph": "node src/services/mophSync.js --once",
+    "migrate": "node src/db/migrate.js"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "pg": "^8.13.0"
   },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
-    "vite": "^5.4.0"
-  }
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "license": "UNLICENSED"
 }
